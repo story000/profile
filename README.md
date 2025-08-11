@@ -16,7 +16,12 @@ A dynamic portfolio website deployable on Vercel with JSON configuration.
 
 ```
 ├── index.html              # Main portfolio webpage
+├── gallery.html            # Image gallery page
 ├── portfolio_config.json   # Configuration file with all data
+├── images-list.json        # Generated image list (auto-created)
+├── generate-image-list.py  # Script to generate image list
+├── avatar.jpg              # Profile avatar (optional)
+├── images/                 # Project screenshots folder
 ├── vercel.json             # Vercel deployment configuration
 ├── package.json            # Project metadata
 └── README.md              # This file
@@ -63,6 +68,19 @@ Edit `portfolio_config.json` to customize:
 - **Contact Details**: Email and social media links
 - **Projects**: Add/edit/remove projects with their details
 - **External Links**: GitHub, LinkedIn, Notion URLs
+
+### Add Profile Avatar
+
+1. **Add Avatar Image**: Place your avatar image as `avatar.jpg` in the root directory
+2. **Supported Formats**: JPG, PNG (will be displayed as circular avatar)
+3. **Recommended Size**: 200x200px or larger (square ratio works best)
+4. **Fallback**: If no avatar is found, shows letter "S" as placeholder
+
+### Add Project Screenshots
+
+1. **Add Images**: Place screenshots in `images/project-id/` folders
+2. **Generate List**: Run `python3 generate-image-list.py` after adding images
+3. **Deploy**: The generated `images-list.json` will be included in deployment
 
 ### Example Project Entry
 
