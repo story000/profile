@@ -33,13 +33,42 @@
     .title{font-size:20px; font-weight:700}
     .nav a.btn{padding:10px 14px; border:1px solid var(--border); border-radius:12px; color:var(--text)}
     .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2)); border:none; color:#fff}
-    .hero{margin:18px 0 26px; padding:24px; border:1px solid var(--border); background: radial-gradient(1000px 500px at 10% -10%, rgba(92,141,255,.15), transparent),
-           linear-gradient(180deg, rgba(157,123,255,.1), rgba(17,19,24,.6)); border-radius:16px; box-shadow:var(--shadow)}
+    .hero{margin:18px 0 26px; border:1px solid var(--border); background: radial-gradient(1000px 500px at 10% -10%, rgba(92,141,255,.15), transparent),
+           linear-gradient(180deg, rgba(157,123,255,.1), rgba(17,19,24,.6)); border-radius:16px; box-shadow:var(--shadow); overflow:hidden}
+    .hero-header{padding:24px 24px 16px}
     .hero h1{margin:0 0 6px; font-size:30px}
-    .hero p{margin:10px 0 0; color:var(--muted)}
+    .hero .tagline{margin:10px 0 0; color:var(--muted); font-size:16px}
 
-    .meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
-    .chip{border:1px solid var(--border); padding:6px 10px; border-radius:999px; color:var(--muted); font-size:13px}
+    .philosophy{padding:20px 24px; border-top:1px dashed var(--border); background:rgba(0,0,0,.2)}
+    .philosophy h3{margin:0 0 10px; font-size:18px; color:var(--brand)}
+    .philosophy .content{color:#d1d9e6; margin-bottom:12px; line-height:1.7}
+    .philosophy .principles{display:flex; gap:6px; flex-wrap:wrap}
+    .philosophy .principle{font-size:12px; padding:4px 8px; background:rgba(92,141,255,.1); border:1px solid rgba(92,141,255,.3); border-radius:12px; color:#a8c5ff}
+
+    .hero-sections{display:grid; grid-template-columns:1fr; gap:0; border-top:1px dashed var(--border)}
+    @media (min-width:920px){ .hero-sections{grid-template-columns:1fr 1fr 1fr} }
+    
+    .hero-section{padding:20px 24px; border-right:1px dashed var(--border)}
+    .hero-section:last-child{border-right:none}
+    .hero-section h4{margin:0 0 12px; font-size:15px; color:var(--text)}
+    
+    .timeline-item{margin-bottom:12px; padding-left:12px; border-left:2px solid var(--border)}
+    .timeline-period{font-size:11px; color:var(--brand); font-weight:600; margin-bottom:2px}
+    .timeline-title{font-size:13px; font-weight:500; margin-bottom:2px}
+    .timeline-desc{font-size:12px; color:var(--muted); line-height:1.4}
+    
+    .skill-category{margin-bottom:12px}
+    .skill-category-name{font-size:12px; color:var(--text); margin-bottom:4px; font-weight:500}
+    .skill-tags{display:flex; gap:4px; flex-wrap:wrap}
+    .skill-tag{font-size:11px; padding:2px 6px; background:var(--card); border:1px solid var(--border); border-radius:8px; color:var(--muted)}
+    
+    .achievement-item{font-size:12px; color:#c7d0e5; margin-bottom:6px; padding-left:12px; position:relative}
+    .achievement-item:before{content:"▪"; position:absolute; left:0; color:var(--brand)}
+
+    @media (max-width:919px){
+      .hero-section{border-right:none; border-bottom:1px dashed var(--border)}
+      .hero-section:last-child{border-bottom:none}
+    }
 
     .section-head{display:flex; align-items:flex-end; justify-content:space-between; margin:34px 0 12px}
     .section-head h2{margin:0; font-size:22px}
@@ -104,10 +133,25 @@
 
     <!-- 个人简介 / Hero -->
     <header class="hero" id="about">
-      <h1 id="hero-title">产品经理（AI/数据方向）</h1>
-      <p id="hero-description">关注以数据为中心的产品设计与落地：从用户洞察、竞品研究到解决方案与指标闭环。近期聚焦 <strong>Agentic Workflow</strong>、<strong>RAG 知识库</strong> 与 <strong>数据分析助手</strong> 的端到端体验。</p>
-      <div class="meta" id="skills-container">
-        <!-- Skills will be loaded here -->
+      <div class="hero-header">
+        <h1 id="hero-title">AI 产品经理（技术背景）</h1>
+        <p class="tagline" id="hero-tagline">技术背景 + 产品思维，专注构建可信赖的智能系统</p>
+      </div>
+      
+      <div class="philosophy" id="philosophy-section">
+        <!-- Philosophy will be loaded here -->
+      </div>
+      
+      <div class="hero-sections">
+        <div class="hero-section" id="background-section">
+          <!-- Background will be loaded here -->
+        </div>
+        <div class="hero-section" id="skills-section">
+          <!-- Skills will be loaded here -->
+        </div>
+        <div class="hero-section" id="achievements-section">
+          <!-- Achievements will be loaded here -->
+        </div>
       </div>
     </header>
 
@@ -160,14 +204,56 @@
       document.getElementById('nav-title').textContent = profile.name;
       document.getElementById('nav-subtitle').textContent = profile.subtitle;
       document.getElementById('hero-title').textContent = profile.title;
-      document.getElementById('hero-description').innerHTML = profile.description;
+      document.getElementById('hero-tagline').textContent = profile.tagline;
       document.getElementById('contact-btn').href = `mailto:${navigation.contact_email}`;
       
+      // Render philosophy
+      const philosophySection = document.getElementById('philosophy-section');
+      philosophySection.innerHTML = `
+        <h3>${profile.philosophy.title}</h3>
+        <div class="content">${profile.philosophy.content}</div>
+        <div class="principles">
+          ${profile.philosophy.principles.map(principle => 
+            `<span class="principle">${principle}</span>`
+          ).join('')}
+        </div>
+      `;
+      
+      // Render background
+      const backgroundSection = document.getElementById('background-section');
+      backgroundSection.innerHTML = `
+        <h4>${profile.background.title}</h4>
+        ${profile.background.items.map(item => `
+          <div class="timeline-item">
+            <div class="timeline-period">${item.period}</div>
+            <div class="timeline-title">${item.title}</div>
+            <div class="timeline-desc">${item.description}</div>
+          </div>
+        `).join('')}
+      `;
+      
       // Render skills
-      const skillsContainer = document.getElementById('skills-container');
-      skillsContainer.innerHTML = profile.skills
-        .map(skill => `<span class="chip">${skill}</span>`)
-        .join('');
+      const skillsSection = document.getElementById('skills-section');
+      skillsSection.innerHTML = `
+        <h4>${profile.core_skills.title}</h4>
+        ${profile.core_skills.categories.map(category => `
+          <div class="skill-category">
+            <div class="skill-category-name">${category.name}</div>
+            <div class="skill-tags">
+              ${category.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+            </div>
+          </div>
+        `).join('')}
+      `;
+      
+      // Render achievements
+      const achievementsSection = document.getElementById('achievements-section');
+      achievementsSection.innerHTML = `
+        <h4>${profile.achievements.title}</h4>
+        ${profile.achievements.items.map(item => `
+          <div class="achievement-item">${item}</div>
+        `).join('')}
+      `;
       
       // Update footer links
       document.getElementById('github-link').href = navigation.external_links.github;
@@ -241,7 +327,7 @@
                 </div>
                 <div class="links">
                   <a class="btn" href="${project.links.demo}" target="_blank" rel="noopener">演示</a>
-                  <a class="btn" href="${project.links.screenshots}" target="_blank" rel="noopener">截图</a>
+                  <a class="btn" href="gallery.html?project=${project.id}" rel="noopener">截图</a>
                 </div>
               </div>
             </aside>
