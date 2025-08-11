@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title id="page-title">Story · 产品作品集</title>
+  <meta name="description" content="秋招产品岗 · 网页端作品集 · 侧重产品思维、调研与落地能力" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --card: #111318;
+      --muted: #8a92a6;
+      --text: #e8edf6;
+      --brand: #5c8dff;
+      --brand-2: #9d7bff;
+      --border: #1e2230;
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0; background:var(--bg); color:var(--text); font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif; line-height:1.6}
+    a{color:var(--brand); text-decoration:none}
+    a:hover{opacity:.9}
+    .container{max-width:1100px; margin:0 auto; padding:28px 20px 80px}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 0 20px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{width:36px; height:36px; border-radius:12px; background: linear-gradient(135deg,var(--brand),var(--brand-2)); display:grid; place-items:center; color:#fff; font-weight:700; box-shadow:var(--shadow)}
+    .title{font-size:20px; font-weight:700}
+    .nav a.btn{padding:10px 14px; border:1px solid var(--border); border-radius:12px; color:var(--text)}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2)); border:none; color:#fff}
+    .hero{margin:18px 0 26px; padding:24px; border:1px solid var(--border); background: radial-gradient(1000px 500px at 10% -10%, rgba(92,141,255,.15), transparent),
+           linear-gradient(180deg, rgba(157,123,255,.1), rgba(17,19,24,.6)); border-radius:16px; box-shadow:var(--shadow)}
+    .hero h1{margin:0 0 6px; font-size:30px}
+    .hero p{margin:10px 0 0; color:var(--muted)}
+
+    .meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+    .chip{border:1px solid var(--border); padding:6px 10px; border-radius:999px; color:var(--muted); font-size:13px}
+
+    .section-head{display:flex; align-items:flex-end; justify-content:space-between; margin:34px 0 12px}
+    .section-head h2{margin:0; font-size:22px}
+    .filters{display:flex; gap:8px; flex-wrap:wrap}
+    .filter{border:1px solid var(--border); padding:8px 12px; border-radius:10px; background:#0e1016; color:#c9d3ea; cursor:pointer; font-size:13px}
+    .filter.active{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#fff; border:none}
+
+    .grid{display:grid; grid-template-columns:1fr; gap:22px}
+    @media (min-width:860px){ .grid{grid-template-columns:1fr} }
+
+    .card{border:1px solid var(--border); background:var(--card); border-radius:16px; padding:22px; box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6px}
+    .tagline{color:var(--muted); margin:4px 0 12px; font-size:14px}
+    .tags{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px}
+    .tag{font-size:12px; padding:4px 8px; border-radius:999px; border:1px solid var(--border); color:#b8c2d9}
+
+    .columns{display:grid; grid-template-columns:1fr; gap:20px}
+    @media (min-width:920px){ .columns{grid-template-columns:1.25fr .95fr} }
+
+    .block{border:1px dashed #2a2f44; border-radius:12px; padding:14px; background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0)); margin-bottom:12px}
+    .block h4{margin:0 0 6px; font-size:15px}
+    .block p, .block li{color:#c7d0e5}
+    .block ul{margin:8px 0 0 18px}
+
+    .preview{border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#0f121a}
+    .preview .thumb{height:178px; display:grid; place-items:center; background:linear-gradient(135deg,#1b2234,#111627)}
+    .preview .thumb svg{opacity:.7}
+    .preview .links{display:flex; gap:10px; padding:12px; border-top:1px solid var(--border)}
+
+    .kpi{display:flex; gap:14px; flex-wrap:wrap; margin-top:6px}
+    .kpi .pill{padding:6px 10px; border-radius:10px; border:1px solid var(--border); background:#0e1118; font-size:12px}
+
+    footer{margin-top:46px; padding-top:18px; color:var(--muted); border-top:1px solid var(--border); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px}
+
+    .loading{display:flex; align-items:center; justify-content:center; min-height:200px; color:var(--muted)}
+
+    /* Print */
+    @media print{
+      .nav .btn, .filters{display:none}
+      body{background:#fff; color:#111}
+      .hero, .card{box-shadow:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 顶部导航 -->
+    <nav class="nav" aria-label="主导航">
+      <div class="brand">
+        <div class="logo" id="logo">S</div>
+        <div>
+          <div class="title" id="nav-title">Story · 产品作品集</div>
+          <div style="color:var(--muted); font-size:13px" id="nav-subtitle">侧重：AI × 数据平台 × B2B 工具化</div>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="#projects">作品</a>
+        <a class="btn" href="#about">关于我</a>
+        <a class="btn primary" id="contact-btn" href="mailto:hello@example.com">联系我</a>
+      </div>
+    </nav>
+
+    <!-- 个人简介 / Hero -->
+    <header class="hero" id="about">
+      <h1 id="hero-title">产品经理（AI/数据方向）</h1>
+      <p id="hero-description">关注以数据为中心的产品设计与落地：从用户洞察、竞品研究到解决方案与指标闭环。近期聚焦 <strong>Agentic Workflow</strong>、<strong>RAG 知识库</strong> 与 <strong>数据分析助手</strong> 的端到端体验。</p>
+      <div class="meta" id="skills-container">
+        <!-- Skills will be loaded here -->
+      </div>
+    </header>
+
+    <!-- 作品区头部 -->
+    <div class="section-head" id="projects">
+      <h2>精选产品项目</h2>
+      <div class="filters" id="filters-container" role="group" aria-label="筛选标签">
+        <!-- Filters will be loaded here -->
+      </div>
+    </div>
+
+    <!-- 卡片网格 -->
+    <section class="grid" id="projects-container">
+      <div class="loading">加载中...</div>
+    </section>
+
+    <footer id="footer-container">
+      <div>© 2025 Story · Product Portfolio</div>
+      <div>简历与更多链接：<a href="#" id="github-link">GitHub</a> · <a href="#" id="linkedin-link">LinkedIn</a> · <a href="#" id="notion-link">Notion</a></div>
+    </footer>
+  </div>
+
+  <script>
+    let portfolioData = null;
+    let currentFilter = 'all';
+
+    // Load portfolio data from JSON file
+    async function loadPortfolioData() {
+      try {
+        const response = await fetch('./portfolio_config.json');
+        if (!response.ok) throw new Error('Failed to fetch portfolio data');
+        portfolioData = await response.json();
+        
+        renderProfile();
+        renderFilters();
+        renderProjects();
+        setupEventListeners();
+      } catch (error) {
+        console.error('Error loading portfolio data:', error);
+        document.getElementById('projects-container').innerHTML = 
+          '<div class="loading">加载失败，请刷新页面重试</div>';
+      }
+    }
+
+    function renderProfile() {
+      const { profile, navigation } = portfolioData;
+      
+      document.getElementById('page-title').textContent = profile.name;
+      document.getElementById('logo').textContent = profile.logo;
+      document.getElementById('nav-title').textContent = profile.name;
+      document.getElementById('nav-subtitle').textContent = profile.subtitle;
+      document.getElementById('hero-title').textContent = profile.title;
+      document.getElementById('hero-description').innerHTML = profile.description;
+      document.getElementById('contact-btn').href = `mailto:${navigation.contact_email}`;
+      
+      // Render skills
+      const skillsContainer = document.getElementById('skills-container');
+      skillsContainer.innerHTML = profile.skills
+        .map(skill => `<span class="chip">${skill}</span>`)
+        .join('');
+      
+      // Update footer links
+      document.getElementById('github-link').href = navigation.external_links.github;
+      document.getElementById('linkedin-link').href = navigation.external_links.linkedin;
+      document.getElementById('notion-link').href = navigation.external_links.notion;
+    }
+
+    function renderFilters() {
+      const filtersContainer = document.getElementById('filters-container');
+      filtersContainer.innerHTML = portfolioData.filters
+        .map(filter => 
+          `<button class="filter ${filter.key === 'all' ? 'active' : ''}" data-filter="${filter.key}">${filter.label}</button>`
+        )
+        .join('');
+    }
+
+    function renderProjects() {
+      const projectsContainer = document.getElementById('projects-container');
+      const filteredProjects = currentFilter === 'all' 
+        ? portfolioData.projects
+        : portfolioData.projects.filter(project => project.categories.includes(currentFilter));
+
+      if (filteredProjects.length === 0) {
+        projectsContainer.innerHTML = '<div class="loading">暂无匹配的项目</div>';
+        return;
+      }
+
+      projectsContainer.innerHTML = filteredProjects
+        .map(project => createProjectCard(project))
+        .join('');
+    }
+
+    function createProjectCard(project) {
+      const tagsHtml = project.tags
+        .map(tag => `<span class="tag">${tag}</span>`)
+        .join('');
+      
+      const kpisHtml = project.kpis
+        .map(kpi => `<span class="pill">${kpi}</span>`)
+        .join('');
+
+      return `
+        <article class="card">
+          <h3>${project.title}</h3>
+          <div class="tagline">${project.tagline}</div>
+          <div class="tags">${tagsHtml}</div>
+          <div class="columns">
+            <div>
+              <div class="block">
+                <h4>产品介绍（背景/竞品/方案/落地）</h4>
+                <ul>
+                  <li><strong>背景</strong>：${project.description.background}</li>
+                  <li><strong>竞品调研</strong>：${project.description.competitor_analysis}</li>
+                  <li><strong>方案</strong>：${project.description.solution}</li>
+                  <li><strong>落地</strong>：${project.description.implementation}</li>
+                </ul>
+                <div class="kpi">${kpisHtml}</div>
+              </div>
+              <div class="block">
+                <h4>我的角色</h4>
+                <p>${project.role}</p>
+              </div>
+            </div>
+            <aside>
+              <div class="preview" aria-label="产品展示">
+                <div class="thumb">
+                  <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 5.5C3 4.12 4.12 3 5.5 3h13A2.5 2.5 0 0 1 21 5.5v13A2.5 2.5 0 0 1 18.5 21h-13A2.5 2.5 0 0 1 3 18.5v-13Z" stroke="#7b86a8"/>
+                    <path d="M7 16l3-4 3 3 4-6 3 5" stroke="#7b86a8"/>
+                  </svg>
+                </div>
+                <div class="links">
+                  <a class="btn" href="${project.links.demo}" target="_blank" rel="noopener">演示</a>
+                  <a class="btn" href="${project.links.screenshots}" target="_blank" rel="noopener">截图</a>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </article>
+      `;
+    }
+
+    function setupEventListeners() {
+      // Filter buttons
+      document.getElementById('filters-container').addEventListener('click', (e) => {
+        if (e.target.classList.contains('filter')) {
+          // Update active filter
+          document.querySelectorAll('.filter').forEach(btn => btn.classList.remove('active'));
+          e.target.classList.add('active');
+          
+          // Update current filter and re-render projects
+          currentFilter = e.target.dataset.filter;
+          renderProjects();
+        }
+      });
+    }
+
+    // Initialize the application
+    document.addEventListener('DOMContentLoaded', loadPortfolioData);
+  </script>
+</body>
+</html>

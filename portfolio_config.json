@@ -1,0 +1,128 @@
+{
+  "profile": {
+    "name": "刘思源 · 产品作品集",
+    "subtitle": "擅长：AI Agent × AIML × 数据处理",
+    "logo": "S",
+    "title": "产品经理（AI/数据方向）",
+    "description": "关注以数据为中心的产品设计与落地：从用户洞察、竞品研究到解决方案与指标闭环。近期聚焦 <strong>Agentic Workflow</strong>、<strong>RAG 知识库</strong> 与 <strong>数据分析助手</strong> 的端到端体验。",
+    "skills": [
+      "用户研究",
+      "数据产品",
+      "AI 能力集成",
+      "ToB 解决方案",
+      "增长与指标"
+    ]
+  },
+  "navigation": {
+    "contact_email": "liusiyuan@cmu.edu",
+    "external_links": {
+      "github": "https://github.com/liusiyuan",
+      "linkedin": "https://linkedin.com/in/liusiyuan",
+      "notion": "https://notion.so/liusiyuan-portfolio"
+    }
+  },
+  "projects": [
+    {
+      "id": "project1",
+      "title": "产品 1 · AI 周报系统（AIVC）",
+      "tagline": "自动化新闻周报/项目研究摘要/领域报告生产线",
+      "categories": ["ai", "b2b"],
+      "tags": [
+        "Agentic Workflow",
+        "RAG",
+        "LangGraph",
+        "AWS"
+      ],
+      "description": {
+        "background": "内部知识分散（Notion/Drive），手工整理周报效率低。",
+        "competitor_analysis": "对比 Perplexity/Notion AI/自研脚本，识别准确率 & 可控性差异。",
+        "solution": "多智能体编排 + 可控检索 + 结构化模板；引入 DL + HITL 反馈回路。",
+        "implementation": "服务化（FastAPI）+ 云端部署（AWS）；权限与审计闭环。"
+      },
+      "kpis": [
+        "F1 ↑ 20%",
+        "冗余 ↓ 80%",
+        "分类准确率 ≥ 99%",
+        "重要性判断 ≥ 95%"
+      ],
+      "role": "Owner（调研 → 方案 → 交互设计 → 指标体系 → 上线验收）。",
+      "links": {
+        "demo": "https://demo.aivc-system.com",
+        "screenshots": "https://github.com/liusiyuan/aivc-screenshots"
+      }
+    },
+    {
+      "id": "project2",
+      "title": "产品 2 · 数据洞察平台（Research Hub）",
+      "tagline": "多源数据接入、指标体系与自助分析",
+      "categories": ["data", "b2b"],
+      "tags": [
+        "Dashboard",
+        "SQL/Rollup",
+        "权限/审计"
+      ],
+      "description": {
+        "background": "季度投后指标汇报链路长、数据口径不统一。",
+        "competitor_analysis": "Metabase/Redash/内部脚本，易用性弱。",
+        "solution": "指标字典 + 维度建模；主题看板 + 自助查询；导出与订阅。",
+        "implementation": "版本化口径管理；异常监控与数据血缘。"
+      },
+      "kpis": [
+        "报表产出效率 ×3",
+        "关键指标一致性 100%"
+      ],
+      "role": "产品策划与交互主导，协同数据工程与前端开发；负责验收与指标治理。",
+      "links": {
+        "demo": "https://research-hub.internal.com",
+        "screenshots": "https://github.com/liusiyuan/research-hub-screenshots"
+      }
+    },
+    {
+      "id": "project3",
+      "title": "产品 3 · 自然语言查询（NLQ → 图表）",
+      "tagline": "面向非技术同学的语义分析与可视化",
+      "categories": ["ai", "data", "b2b"],
+      "tags": [
+        "NL2SQL",
+        "可视化",
+        "Prompt / 模型评测"
+      ],
+      "description": {
+        "background": "业务同学希望用自然语言快速拿到图表与洞察。",
+        "competitor_analysis": "Chat2DB/Deepnote/Julius；门槛与误差并存。",
+        "solution": "意图识别 → 维度/指标映射 → SQL 生成与安全沙箱执行 → 图表推荐。",
+        "implementation": "冷启动引导 + 提问示例库；异常回退到表单查询。"
+      },
+      "kpis": [
+        "学习成本 ↓ 70%",
+        "有效查询成功率 ≥ 92%"
+      ],
+      "role": "场景抽象、提示工程与评测集设计；定义冷启动与兜底策略。",
+      "links": {
+        "demo": "https://nlq-platform.demo.com",
+        "screenshots": "https://github.com/liusiyuan/nlq-screenshots"
+      }
+    }
+  ],
+  "filters": [
+    {
+      "key": "all",
+      "label": "全部"
+    },
+    {
+      "key": "ai",
+      "label": "AI/Agent"
+    },
+    {
+      "key": "data",
+      "label": "数据平台"
+    },
+    {
+      "key": "b2b",
+      "label": "ToB"
+    }
+  ],
+  "footer": {
+    "copyright": "© 2025 Story · Product Portfolio"
+  }
+}
