@@ -4,14 +4,14 @@
     "subtitle": "擅长：AI Agent × AIML × 数据处理",
     "logo": "S",
     "title": "AI 产品经理（技术背景）",
-    "tagline": "技术背景 + 产品思维，专注构建可信赖的智能系统",
+    "tagline": "算法技术背景 + 深度产品思考，追踪前沿 AI 产品和技术",
     "philosophy": {
       "title": "AI产品设计理念",
-      "content": "坚持<strong>用户意图理解第一</strong>，<strong>AI能力边界透明</strong>，<strong>异常处理优雅</strong>三大设计原则。从Agent工作流设计到RAG系统优化，从prompt engineering到模型评测，致力于让AI产品既聪明又可靠。",
+      "content": "让产品与 LLM 的智力曲线同步升级，榨干每一阶段的技术潜力，再进入下一层形态演进——LLM → LLM + RAG → AI Workflow → Agent → Multi-Agent。避免在技术尚未成熟前引入过度复杂的架构。",
       "principles": [
-        "端到端产品",
-        "奥卡姆剃刀原则",
-        "把复杂的逻辑交给后端，把简单的交互留给用户"
+        "端到端",
+        "奥卡姆剃刀",
+        "复杂的逻辑交给后端，简单的交互留给用户"
       ]
     },
     "background": {
@@ -19,7 +19,7 @@
       "items": [
         {
           "period": "2024-2025",
-          "title": "卡耐基梅隆大学 MISM-BIDA",
+          "title": "卡耐基梅隆大学(CMU) MISM-BIDA",
           "description": "信息系统管理硕士（商业智能方向），GPA 3.87/4.0，专注数据分析与 AI Agent 设计"
         },
         {
@@ -38,7 +38,7 @@
         },
         {
           "name": "数据产品",
-          "skills": ["指标体系", "可视化设计", "自助分析", "数据治理"]
+          "skills": ["指标评估设计", "可视化", "数据飞轮", "数据库查询"]
         },
         {
           "name": "竞品调研",
@@ -47,11 +47,13 @@
       ]
     },
     "achievements": {
-      "title": "关键成果",
+      "title": "标签墙",
       "items": [
-        "AI系统准确率提升20%+，用户效率提升3倍",
-        "从0到1搭建企业数据洞察平台，服务100+用户",
-        "设计多个Agent工作流，实现复杂任务自动化"
+        "赛博硅谷人",
+        "Claude Code 鼓励家",
+        "n8n 积木师",
+        "模型试吃员",
+        "挑剔型人格"
       ]
     }
   },

@@ -183,7 +183,8 @@
         const response = await fetch('./images-list.json');
         if (response.ok) {
           const allImages = await response.json();
-          const projectImages = allImages[projectId] || [];
+          const projectConfig = allImages[projectId] || { images: [] };
+          const projectImages = projectConfig.images || projectConfig; // 兼容旧格式
           displayImages(projectImages, projectId, galleryContainer);
           return;
         }

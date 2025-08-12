@@ -27,15 +27,23 @@ def generate_image_lists():
                 
                 # 按文件名排序
                 images.sort()
-                all_images[project_folder] = images
+                
+                # 项目配置：图片列表 + 封面图片选择
+                project_config = {
+                    "images": images,
+                    "cover_image": images[0] if images else None  # 默认第一张图片作为封面
+                }
+                
+                all_images[project_folder] = project_config
                 
                 print(f"项目 {project_folder}: 找到 {len(images)} 张图片")
-                for img in images:
-                    print(f"  - {img}")
+                for i, img in enumerate(images):
+                    cover_indicator = " (封面)" if i == 0 else ""
+                    print(f"  - {img}{cover_indicator}")
                     
             except OSError as e:
                 print(f"读取 {project_folder} 文件夹时出错: {e}")
-                all_images[project_folder] = []
+                all_images[project_folder] = {"images": [], "cover_image": None}
     
     # 写入JSON文件
     output_file = os.path.join(base_dir, 'images-list.json')

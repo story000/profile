@@ -103,10 +103,11 @@
     .block p, .block li{color:#c7d0e5}
     .block ul{margin:8px 0 0 18px}
 
-    .preview{border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#0f121a}
-    .preview .thumb{height:178px; display:grid; place-items:center; background:linear-gradient(135deg,#1b2234,#111627)}
+    .preview{border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#0f121a; display:flex; flex-direction:column}
+    .preview .thumb{height:178px; display:grid; place-items:center; background:linear-gradient(135deg,#1b2234,#111627); flex:1}
     .preview .thumb svg{opacity:.7}
-    .preview .links{display:flex; gap:10px; padding:12px; border-top:1px solid var(--border)}
+    .preview .thumb img{width:100%; height:100%; object-fit:cover}
+    .preview .links{display:flex; gap:10px; padding:12px; border-top:1px solid var(--border); margin-top:auto}
 
     .kpi{display:flex; gap:14px; flex-wrap:wrap; margin-top:6px}
     .kpi .pill{padding:6px 10px; border-radius:10px; border:1px solid var(--border); background:#0e1118; font-size:12px}
@@ -304,7 +305,7 @@
         .join('');
     }
 
-    function renderProjects() {
+    async function renderProjects() {
       const projectsContainer = document.getElementById('projects-container');
       const filteredProjects = currentFilter === 'all' 
         ? portfolioData.projects
@@ -315,12 +316,23 @@
         return;
       }
 
+      // 加载图片配置
+      let imageConfigs = {};
+      try {
+        const response = await fetch('./images-list.json');
+        if (response.ok) {
+          imageConfigs = await response.json();
+        }
+      } catch (error) {
+        console.log('图片配置加载失败，使用默认显示');
+      }
+
       projectsContainer.innerHTML = filteredProjects
-        .map(project => createProjectCard(project))
+        .map(project => createProjectCard(project, imageConfigs[project.id]))
         .join('');
     }
 
-    function createProjectCard(project) {
+    function createProjectCard(project, imageConfig) {
       const tagsHtml = project.tags
         .map(tag => `<span class="tag">${tag}</span>`)
         .join('');
@@ -328,6 +340,22 @@
       const kpisHtml = project.kpis
         .map(kpi => `<span class="pill">${kpi}</span>`)
         .join('');
+
+      // 生成缩略图内容
+      let thumbnailContent = '';
+      if (imageConfig && imageConfig.cover_image) {
+        const imagePath = `./images/${project.id}/${imageConfig.cover_image}`;
+        thumbnailContent = `<img src="${imagePath}" alt="${project.title} 封面" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                           <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                             <path d="M3 5.5C3 4.12 4.12 3 5.5 3h13A2.5 2.5 0 0 1 21 5.5v13A2.5 2.5 0 0 1 18.5 21h-13A2.5 2.5 0 0 1 3 18.5v-13Z" stroke="#7b86a8"/>
+                             <path d="M7 16l3-4 3 3 4-6 3 5" stroke="#7b86a8"/>
+                           </svg>`;
+      } else {
+        thumbnailContent = `<svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <path d="M3 5.5C3 4.12 4.12 3 5.5 3h13A2.5 2.5 0 0 1 21 5.5v13A2.5 2.5 0 0 1 18.5 21h-13A2.5 2.5 0 0 1 3 18.5v-13Z" stroke="#7b86a8"/>
+                             <path d="M7 16l3-4 3 3 4-6 3 5" stroke="#7b86a8"/>
+                           </svg>`;
+      }
 
       return `
         <article class="card">
@@ -354,10 +382,7 @@
             <aside>
               <div class="preview" aria-label="产品展示">
                 <div class="thumb">
-                  <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 5.5C3 4.12 4.12 3 5.5 3h13A2.5 2.5 0 0 1 21 5.5v13A2.5 2.5 0 0 1 18.5 21h-13A2.5 2.5 0 0 1 3 18.5v-13Z" stroke="#7b86a8"/>
-                    <path d="M7 16l3-4 3 3 4-6 3 5" stroke="#7b86a8"/>
-                  </svg>
+                  ${thumbnailContent}
                 </div>
                 <div class="links">
                   <a class="btn" href="${project.links.demo}" target="_blank" rel="noopener">演示</a>

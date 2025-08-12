@@ -11,6 +11,8 @@ A dynamic portfolio website deployable on Vercel with JSON configuration.
 - **External Links**: Proper external links for GitHub, LinkedIn, Notion
 - **Project Filtering**: Filter projects by category (AI/Agent, Data Platform, ToB)
 - **Fast Loading**: Client-side rendering with caching
+- **Cover Images**: Each project displays cover image on homepage
+- **Image Gallery**: Click "截图" to view all project screenshots
 
 ## Files Structure
 
@@ -20,6 +22,7 @@ A dynamic portfolio website deployable on Vercel with JSON configuration.
 ├── portfolio_config.json   # Configuration file with all data
 ├── images-list.json        # Generated image list (auto-created)
 ├── generate-image-list.py  # Script to generate image list
+├── customize-cover.md      # Guide for customizing cover images
 ├── avatar.jpg              # Profile avatar (optional)
 ├── images/                 # Project screenshots folder
 ├── vercel.json             # Vercel deployment configuration
