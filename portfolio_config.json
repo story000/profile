@@ -97,7 +97,7 @@
     {
       "id": "aivc",
       "title": "AIVC 多智能体研究系统",
-      "tagline": "端到端自动化新闻周报与研究报告生成平台",
+      "tagline": "端到端研究报告生成平台",
       "categories": ["ai", "b2b"],
       "tags": [
         "Multi-Agent",
@@ -107,20 +107,19 @@
         "AWS Cloud"
       ],
       "description": {
-        "background": "IOSG 内部存在重复劳动与信息孤岛：部分任务规则清晰但缺乏自动化支撑；海量历史数据未被充分利用，新人学习成本高。",
-        "competitor_analysis": "公司需要针对特定任务的自动化解决方案，而现有的通用AI工具无法满足数据、报告生成等复杂的业务需求，也无法交付端到端的解决方案。",
-        "solution": "构建多智能体协作框架：RSS/Firecrawl/Grok/Perplexity多源网络数据采集 → Supabase 从零构建公司专有知识库 → LangGraph RAG 检索增强 → ML 处理结构化数据，LLM 处理非结构化数据 → LoRA模型微调",
-        "implementation": "针对复杂问题，采用 FastAPI 服务化部署于AWS Cloud；为提高新闻“重要性”指标的判定能力，采用 DL+HITL专家反馈环路，引入持续学习机制；针对简单任务，采用 n8n 低代码工作流自动化；为提高系统可用性，采用 LangGraph 进行多智能体编排。"
+        "background": "公司内部存在信息孤岛问题，公司过往沉淀知识和研究框架未被充分利用，分散在研究员脑中。研究员针对新项目，需要从会议记录、Twitter 数据、研报等多源信息中提取市场、竞品等关键信息，根据自有认知生成结构化报告。",
+        "competitor_analysis": "通用AI工具无法理解领域数据获取渠道、报告生成要求等细节，Deep Research 存在大而全的问题，n8n 工作流工具无法满足复杂的多智能体编排需求。",
+        "solution": "规划&执行：将不同格式本地数据统一处理成长上下文文本 → 根据结构段落分板块生成草稿 → 智能体规划数据采集需求，使用 LangGraph 进行多智能体编排 → 通过各渠道API采集领域专有数据 → 通过 RAG 检索增强生成结构化报告。",
+        "implementation": "参考开源 Deep Research 架构，设计研究编排逻辑，涵盖任务规划、检索、数据抽取与写作；Docsend、会议转录、Twitter 等多源数据处理成txt格式，接入 Supabase 向量库并经 RAG 检索增强；Prompt Engineering 优化内容输出；Firecrawl/Grok/Perplexity/Ampify 进行外部数据采集；引入 DL+HITL 专家反馈闭环优化分类与判定模型；支持 HTML/PDF/Markdown 多格式导出与版本化管理。"
       },
       "kpis": [
-        "模型F1分数提升20%",
-        "报告冗余/重复输出减少80%", 
-        "新闻分类准确率99%+",
-        "重要性判定准确率95%+"
+        "研究员研究报告撰写时间缩短 80%",
+        "消除90%以上的幻觉知识",
+        "数据获取渠道全覆盖"
       ],
       "role": "项目Owner：主导系统架构设计、多智能体编排、模型微调与生产部署全流程。",
       "links": {
-        "demo": "http://52.15.162.255:8080/"
+        "demo": "https://summary.inevitable.tech/"
       }
     },
     {

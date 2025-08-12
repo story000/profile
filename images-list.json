@@ -1,4 +1,13 @@
 {
+  "aivc": {
+    "images": [
+      "Prompt Engineering.png",
+      "模型对比实验.png",
+      "用户输入.png",
+      "结构化报告.png"
+    ],
+    "cover_image": "Prompt Engineering.png"
+  },
   "graph-algorithm-optimization": {
     "images": [],
     "cover_image": null
