@@ -1,13 +1,4 @@
 {
-  "aivc-system": {
-    "images": [
-      "可交互界面.png",
-      "数据标注中心.png",
-      "系统评测界面.png",
-      "自动化页面.png"
-    ],
-    "cover_image": "可交互界面.png"
-  },
   "graph-algorithm-optimization": {
     "images": [],
     "cover_image": null
@@ -15,6 +6,16 @@
   "blockchain-graph-mining": {
     "images": [],
     "cover_image": null
+  },
+  "ai-report-generator": {
+    "images": [
+      "可交互界面.png",
+      "报告.png",
+      "数据标注中心.png",
+      "系统评测界面.png",
+      "自动化页面.png"
+    ],
+    "cover_image": "可交互界面.png"
   },
   "quant-ml-system": {
     "images": [],

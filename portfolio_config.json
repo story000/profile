@@ -7,7 +7,7 @@
     "tagline": "算法技术背景 + 深度产品思考，追踪前沿 AI 产品和技术",
     "philosophy": {
       "title": "AI产品设计理念",
-      "content": "让产品与 LLM 的智力曲线同步升级，榨干每一阶段的技术潜力，再进入下一层形态演进——LLM → LLM + RAG → AI Workflow → Agent → Multi-Agent。避免在技术尚未成熟前引入过度复杂的架构。",
+      "content": "让产品与 LLM 的智力曲线同步升级，榨干每一阶段的技术潜力，再进入下一层形态——LLM → LLM + RAG → AI Workflow → Agent → Multi-Agent。避免在技术尚未成熟前引入过度复杂的架构。",
       "principles": [
         "端到端",
         "奥卡姆剃刀",
@@ -60,13 +60,42 @@
   "navigation": {
     "contact_email": "sliu5@andrew.cmu.edu",
     "external_links": {
-      "github": "https://github.com/storyy000",
+      "github": "https://github.com/story000",
       "linkedin": "https://www.linkedin.com/in/siyuan-liu-story/"
     }
   },
   "projects": [
     {
-      "id": "aivc-system",
+      "id": "ai-report-generator",
+      "title": "AI 周报生成系统",
+      "tagline": "端到端自动化的新闻周报生成平台",
+      "categories": ["AI", "B2B"],
+      "tags": [
+        "Workflow",
+        "RAG",
+        "LangGraph",
+        "FastAPI",
+        "AWS Cloud"
+      ],
+      "description": {
+        "background": "新闻周报整理任务有明确的数据源、格式和流程，但缺乏自动化支持，人工处理效率低下。",
+        "competitor_analysis": "现有通用 AI 工具难以满足公司对数据采集、报告生成等高定制化、端到端业务流程的需求。Workflow 协议不支持长期新闻数据采集和复杂的文本处理。",
+        "solution": "设计 AI Workflow 处理管线：后端 RSS 数据流式采集 → Supabase 构建新闻知识库 → LangGraph + RAG 检索增强 → ML 算法处理结构化数据 / LLM 处理非结构化数据 → LoRA HITL 微调优化。",
+        "implementation": "基于 FastAPI 部署至 AWS Cloud，根据用户反馈，将 Precision 作为文本分类指标，引入 HITL 专家反馈环路，通过人工标注持续优化重要性判定模型"
+      },
+      "kpis": [
+        "模型 F1 分数提升 20%",
+        "报告冗余输出减少 80%",
+        "新闻分类准确率 ≥ 99%",
+        "新闻重要性判定准确率 ≥ 95%"
+      ],
+      "role": "项目负责人：负责系统架构设计、模型微调与全流程生产部署。",
+      "links": {
+        "demo": "http://52.15.162.255:8080/"
+      }
+    },
+    {
+      "id": "aivc",
       "title": "AIVC 多智能体研究系统",
       "tagline": "端到端自动化新闻周报与研究报告生成平台",
       "categories": ["ai", "b2b"],
@@ -78,14 +107,14 @@
         "AWS Cloud"
       ],
       "description": {
-        "background": "IOSG公司知识分散于Notion和Google Drive，手工整理周报效率低，过往知识沉淀难以复用。",
-        "competitor_analysis": "现有方案如GPT-4直接生成准确率不足，缺乏领域知识整合，无法满足生产级别要求。",
-        "solution": "构建多智能体协作框架：RSS/Firecrawl/Grok多源数据采集 → RAG知识库检索增强 → LangGraph推理链 → LoRA模型微调。",
-        "implementation": "FastAPI服务化部署于AWS Cloud，DL+HITL专家反馈环路，实现实时数据处理与持续学习机制。"
+        "background": "IOSG 内部存在重复劳动与信息孤岛：部分任务规则清晰但缺乏自动化支撑；海量历史数据未被充分利用，新人学习成本高。",
+        "competitor_analysis": "公司需要针对特定任务的自动化解决方案，而现有的通用AI工具无法满足数据、报告生成等复杂的业务需求，也无法交付端到端的解决方案。",
+        "solution": "构建多智能体协作框架：RSS/Firecrawl/Grok/Perplexity多源网络数据采集 → Supabase 从零构建公司专有知识库 → LangGraph RAG 检索增强 → ML 处理结构化数据，LLM 处理非结构化数据 → LoRA模型微调",
+        "implementation": "针对复杂问题，采用 FastAPI 服务化部署于AWS Cloud；为提高新闻“重要性”指标的判定能力，采用 DL+HITL专家反馈环路，引入持续学习机制；针对简单任务，采用 n8n 低代码工作流自动化；为提高系统可用性，采用 LangGraph 进行多智能体编排。"
       },
       "kpis": [
         "模型F1分数提升20%",
-        "报告冗余输出减少80%", 
+        "报告冗余/重复输出减少80%", 
         "新闻分类准确率99%+",
         "重要性判定准确率95%+"
       ],
